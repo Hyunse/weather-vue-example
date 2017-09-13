@@ -1,0 +1,23 @@
+/**
+  * 바벨 설정
+  **/
+{
+  "presets": [
+    ["env", {
+      "modules": false,
+      "targets": {
+        // 적용할 브라우저 범위
+        "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+      }
+    }],
+    // 바벨 버전
+    "stage-2"
+  ],
+  "plugins": ["transform-runtime"],
+  "env": {
+    "test": {
+      "presets": ["env", "stage-2"],
+      "plugins": ["istanbul"]
+    }
+  }
+}
