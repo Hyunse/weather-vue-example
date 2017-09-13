@@ -1,56 +1,72 @@
 <template>
-  <div id="app">
-    <button @click="fetchPosts">불러오기</button>
-    <ul>
-      <li v-for="post in posts">
-        <h1>{{ post.title }}</h1>
-        <p>{{ post.body }}</p>
-      </li>
-    </ul>
-  </div>
+    <div id="app">
+        <div id="infomation">
+            <div id="current-weather">
+                <current-weather />
+            </div>
+
+            <div id="forecast">
+            </div>
+        </div>
+
+        <div id="map">
+        </div>
+    </div>
 </template>
 
 <script>
+import CurrentWeather from '@/components/CurrentWeather'
+
 export default {
-  name: 'app',
-  data () {
-    return {
-      posts: []
+    name: 'app',
+    components: {
+        CurrentWeather
     }
-  },
-  methods: {
-    fetchPosts () {
-      this.axios.get('https://jsonplaceholder.typicode.com/posts', {
-        params: {
-          userId: 1
-        }
-      })
-        .then((response) => {
-          console.log(response)
-          this.posts = response.data
-        })
-      // this 스코프 해결 방법
-      // =>
-      // (function () {}).bind()
-      // this 대신 self
-    }
-  }
 }
 </script>
-<style lang="scss">
-$point-color: #ffffff;
 
-ul {
-  li {
-    h1 {
-      font-size: 20pt;
-      color: red;
-    }
+<style>
+body {
+    background-color: #fafafa;
+}
 
-    p {
-      font-size: 10pt;
-      color: blue;
-    }
-  }
-}  
+#app {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1000px;
+    height: 600px;
+    margin-top: -300px;
+    margin-left: -500px;
+    border-radius: 3px;
+    background-color: #444;
+    box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+#app:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+#app>#infomation {
+    float: left;
+    width: 600px;
+}
+
+#app>#infomation>#current-weather {
+    height: 200px;
+}
+
+#app>#infomation>#forecast {
+    height: 400px;
+    background-color: red;
+}
+
+#app>#map {
+    float: right;
+    width: 400px;
+    height: 600px;
+    background-color: green;
+}
 </style>

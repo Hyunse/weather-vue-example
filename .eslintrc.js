@@ -18,6 +18,8 @@ module.exports = {
   ],
   // add your custom rules here
   'rules': {
+    // 공백 들여쓰기 4칸
+    'indent': ['error',4],
     // allow paren-less arrow functions
     'arrow-parens': 0,
     // allow async-await
