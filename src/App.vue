@@ -1,36 +1,49 @@
+<!-- App.vue -->
 <template>
-    <div id="app">
-        <div id="infomation">
-            <div id="current-weather">
-                <current-weather />
-            </div>
+  <div id="app">
+    <div id="infomation">
+      <div id="current-weather">
+        <current-weather></current-weather>
+      </div>
 
-            <div id="forecast">
-            </div>
-        </div>
-
-        <div id="map">
-        </div>
+      <hr>
+      <div id="forecast">
+          <forecast></forecast>
+      </div>
     </div>
+
+    <div id="map">
+      <google-map></google-map>
+    </div>
+  </div>
 </template>
 
 <script>
 import CurrentWeather from '@/components/CurrentWeather'
+import GoogleMap from '@/components/GoogleMap'
+import Forecast from '@/components/Forecast'
 
 export default {
-    name: 'app',
-    components: {
-        CurrentWeather
-    }
+  name: 'app',
+  components: {
+    CurrentWeather,
+    GoogleMap,
+    Forecast
+  }
 }
 </script>
 
 <style>
-body {
+  body {
     background-color: #fafafa;
-}
-
-#app {
+  }
+  hr {
+      width: 80%;
+      margin: 80px auto;
+      border: none;
+      border-top: 1px solid white;
+  }
+  #app {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -41,32 +54,26 @@ body {
     border-radius: 3px;
     background-color: #444;
     box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.3);
-}
-
-#app:after {
+  }
+  #app:after {
     content: '';
     display: block;
     clear: both;
-}
-
-#app>#infomation {
+  }
+  #app > #infomation {
     float: left;
     width: 600px;
-}
-
-#app>#infomation>#current-weather {
-    height: 200px;
-}
-
-#app>#infomation>#forecast {
+  }
+  #app > #infomation > #current-weather {
+    margin-top: 20px;
+    height: 180px;
+  }
+  #app > #infomation > #forecast {
     height: 400px;
-    background-color: red;
-}
-
-#app>#map {
+  }
+  #app > #map {
     float: right;
     width: 400px;
     height: 600px;
-    background-color: green;
-}
+  }
 </style>

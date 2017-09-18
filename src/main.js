@@ -9,6 +9,7 @@ Vue.use(VueAxios, axios)
 
 // 팁 제공
 // Vue.config.productionTip = false
+Vue.prototype.$bus = new Vue()
 
 // ESLint를 사용 주석으로 처리 ( 없애면 에러 )
 /* eslint-disable no-new */
